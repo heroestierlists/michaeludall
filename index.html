@@ -226,6 +226,7 @@
             url.push('?sql=' + encodedQuery);
             url.push('&key=' + api_key);
             url.push('&callback=?');
+            console.log(url.join(''));
             // Send the JSONP request using jQuery
             $.ajax({
                 url: url.join(''),

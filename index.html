@@ -1,2 +1,347 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2011 Google Inc. All Rights Reserved.
 
-Hello World
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+	  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Naventic Fan's Heroes of the Storm tier list for hero league. Find out which heroes are the strongest and which talents to pick!">
+    <link rel="icon" href="18x18.png">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <h1>Naventic Fan & Rentaro's Hero League Tier List</h1>
+    <h4>Updated on May 22nd, 2016</h4>
+    <style>
+        #tier1,
+        #tier2,
+        #tier3,
+        #tier4,
+        #tier5 {
+            width: 100%;
+            text-align: center;
+        }
+
+        .hero {
+            padding-left: 20px;
+            padding-right: 20px;
+            margin: 2px;
+            white-space: nowrap;
+            font-size: 15px;
+            padding-bottom: 5px;
+            padding-top: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            display: inline-block;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            background-color: #000;
+			position: relative;
+        }
+
+		.active
+		{
+			display: block !important;
+		}
+
+        .hero_icon {
+            margin-right: 10px;
+        }
+
+		.talent_builds
+		{
+			display: none;
+			margin-top: 5px;
+			left: 0;
+			right: 0;
+			position: absolute;
+			padding-left: 0px;
+			z-index: 2;
+			box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+		}
+
+		.talent_builds li
+		{
+			width: 100%;
+			background-color: #C2AE62;
+			border-bottom: solid black 1px;
+			border-left: solid black 1px;
+			border-right: solid black 1px;
+		}
+
+		.talent_builds li:hover
+		{
+			width: 100%;
+			background-color: #baa54f !important;
+			border-bottom: solid black 1px;
+			border-left: solid black 1px;
+			border-right: solid black 1px;
+		}
+
+		.talent_builds li .build_url
+		{
+			color: #000;
+		}
+
+        body {
+            background-color: #999;
+        }
+
+        .hero_info {
+            color: #C2AE62 !important;
+        }
+
+		a
+		{
+			text-decoration: none !important;
+		}
+
+        .hero:hover {
+            box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+            background-color: #222 !important;
+        }
+
+		ul
+		{
+			list-style-type: none;
+		}
+
+        /*.hero.warrior
+		{
+			background-color: #135714;
+		}
+		.hero.warrior:hover
+		{
+			background-color: #186d19;
+		}
+		.hero.support
+		{
+			background-color: #153465;
+		}
+		.hero.support:hover
+		{
+			background-color: #193f7b;
+		}
+		.hero.assassin
+		{
+			background-color: #67160E;
+		}
+		.hero.assassin:hover
+		{
+			background-color: #7e1a11;
+		}
+		.hero.specialist
+		{
+			background-color: #341B4D;
+		}
+		.hero.specialist:hover
+		{
+			background-color: #40215e;
+		}*/
+
+        h1 {
+            font-size: 4.2rem;
+            line-height: 110%;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: normal;
+            background-color: #C2AE62;
+            color: #000;
+        }
+
+        h2 {
+            font-size: 350%;
+            line-height: 110%;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            text-align: -webkit-center;
+            font-family: Roboto, sans-serif;
+            font-weight: normal;
+            color: #000;
+        }
+
+        h4 {
+            font-size: 2.28rem;
+            line-height: 110%;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: normal;
+            color: #000;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 25px;
+            color: #000;
+        }
+
+        .fa {
+            margin-left: 5px;
+        }
+
+        .fa-long-arrow-up {
+            color: #00FF00;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: black;
+        }
+
+        .fa-long-arrow-right {
+            color: yellow;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: black;
+        }
+
+        .fa-long-arrow-down {
+            color: red;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: black;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function initialize() {
+            var query = "SELECT hero_name, hero_current_tier, hero_last_tier, hero_role FROM " +
+                '1JgPmRDbgA5nFwSRCnFlTP2SBEogS76bV94H-qNXO ORDER BY hero_name ASC';
+            var encodedQuery = encodeURIComponent(query);
+
+            // Construct the URL
+            var url = ['https://www.googleapis.com/fusiontables/v2/query'];
+            url.push('?sql=' + encodedQuery);
+            url.push('&key=AIzaSyAm9yWCV7JPCTHCJut8whOjARd7pwROFDQ');
+            url.push('&callback=?');
+            // Send the JSONP request using jQuery
+            $.ajax({
+                url: url.join(''),
+                dataType: 'jsonp',
+                success: function(data) {
+
+                    var query = "SELECT build_hero_name, build_url, build_title FROM " +
+                        '1e_25ohbdsjCzNeBfFupXmzSo-M0l9bB_JgjEqQlj ORDER BY build_hero_name ASC';
+                    var encodedQuery = encodeURIComponent(query);
+
+                    // Construct the URL
+                    var url = ['https://www.googleapis.com/fusiontables/v2/query'];
+                    url.push('?sql=' + encodedQuery);
+                    url.push('&key=AIzaSyAm9yWCV7JPCTHCJut8whOjARd7pwROFDQ');
+                    url.push('&callback=?');
+                    $.ajax({
+                        url: url.join(''),
+                        dataType: 'jsonp',
+                        success: function(build_data) {
+							build_data = build_data['rows'];
+                            var rows = data['rows'];
+                            var build_index = 0;
+                            for (var i in rows) {
+                                var hero_name = rows[i][0];
+                                var normalized_name = hero_name.replace(/ /g, "-").replace(/\./g, "").replace(/'/g, "").toLowerCase();
+                                var hero_current_tier = rows[i][1];
+                                var hero_last_tier = rows[i][2];
+                                var hero_role = rows[i][3].toLowerCase();
+                                var hero_icon = '/images/heroicons/' + normalized_name + '.png';
+								var a = $('<a class="hero_info">' + hero_name + '</a>');
+                                var hero_icon = $('<img class="hero_icon" src="' + hero_icon + '" height="30px" width="30px"/>');
+								a.prepend(hero_icon);
+								if (hero_last_tier) {
+                                    if (hero_current_tier < hero_last_tier) {
+                                        var arrow = 'fa fa-long-arrow-up';
+                                        var tooltip = 'Up From Tier ' + hero_last_tier;
+                                    } else if (hero_current_tier > hero_last_tier) {
+                                        var arrow = 'fa fa-long-arrow-down';
+                                        var tooltip = 'Down From Tier ' + hero_last_tier;
+                                    } else {
+                                        var arrow = 'fa fa-long-arrow-right';
+                                        var tooltip = 'No Tier Change';
+                                    }
+                                    var span = $('<span class="' + arrow + '" data-position="top" data-toggle="tooltip" title="' + tooltip + '"></span>');
+									a.append(span);
+                                }
+								var hero = $('<li class="hero' + (hero_role ? ' ' + hero_role : '') + '"' + '></li>');
+                                hero.append(a);
+								var ul = $('<ul class="talent_builds"></ul>');
+                                while (build_index < build_data.length && build_data[build_index][0] == hero_name) {
+                                    build_url = build_data[build_index][1];
+                                    build_title = build_data[build_index][2];
+									var li = $('<li></li>');
+                                    var url = $('<a class="build_url" href="' + build_url + '" target="_blank">' + build_title + '</a>');
+									li.append(url);
+									ul.append(li);
+									hero.append(ul);
+                                    build_index++;
+                                }
+                                $('#tier' + hero_current_tier).append(hero);
+                            }
+                            $("body").tooltip({
+                                selector: '[data-toggle=tooltip]'
+                            });
+                        },
+                        error: function() {
+                            console.log("Could not pull the talent builds.");
+                        }
+                    });
+                },
+                error: function() {
+                    console.log("Could not pull the tier list information.");
+                }
+            });
+        }
+		$(document).ready(function(){
+			initialize();
+			$('html').click(function(){
+				$('.talent_builds').removeClass('active');
+			});
+			$('#tiers').on('click', '.hero', function(event){
+				event.stopPropagation();
+				child = $(this).children('.talent_builds');
+				child.toggleClass('active');
+				$('.talent_builds').not(child).each(function()
+				{
+					$(this).removeClass('active');
+				});
+			});
+		});
+
+    </script>
+</head>
+
+<body>
+    <ul id="tiers">
+        <li>
+			<h2>Tier 1</h2>
+			<ul id="tier1"></ul>
+		</li>
+        <li>
+			<h2>Tier 2</h2>
+			<ul id="tier2"></ul>
+		</li>
+        <li>
+			<h2>Tier 3</h2>
+			<ul id="tier3"></ul>
+		</li>
+        <li>
+			<h2>Tier 4</h2>
+			<ul id="tier4"></ul>
+		</li>
+        <li>
+			<h2>Tier 5</h2>
+			<ul id="tier5"></ul>
+		</li>
+    </ul>
+    <p>This website is in no way affiliated with, authorized, maintained, sponsored or endorsed by Blizzard Entertainment</p>
+
+</body>
+
+</html>

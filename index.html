@@ -214,14 +214,17 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         function initialize() {
-            var query = "SELECT hero_name, hero_current_tier, hero_last_tier, hero_role FROM " +
-                '1JgPmRDbgA5nFwSRCnFlTP2SBEogS76bV94H-qNXO ORDER BY hero_name ASC';
+            var api_key = 'AIzaSyBPfpuc39zUSa3tmcbUG_r7zBVEjrdriuM';
+            var tier_list_key = '1XBk98i0UYrV_VWOc7GzkpjRIJ8gaSOnBxCg76R9a';
+            var builds_key = '1_YTHYPR0m-HBbYyz6kudZHKIbmQi0jqiBPSXil3X';
+            var query = "SELECT hero_name, hero_current_tier, hero_last_tier, hero_role FROM " + tier_list_key +
+                ' ORDER BY hero_name ASC';
             var encodedQuery = encodeURIComponent(query);
 
             // Construct the URL
             var url = ['https://www.googleapis.com/fusiontables/v2/query'];
             url.push('?sql=' + encodedQuery);
-            url.push('&key=AIzaSyAm9yWCV7JPCTHCJut8whOjARd7pwROFDQ');
+            url.push('&key=' + api_key);
             url.push('&callback=?');
             // Send the JSONP request using jQuery
             $.ajax({
@@ -229,14 +232,14 @@
                 dataType: 'jsonp',
                 success: function(data) {
 
-                    var query = "SELECT build_hero_name, build_url, build_title FROM " +
-                        '1e_25ohbdsjCzNeBfFupXmzSo-M0l9bB_JgjEqQlj ORDER BY build_hero_name ASC';
+                    var query = "SELECT build_hero_name, build_url, build_title FROM " + builds_key +
+                        ' ORDER BY build_hero_name ASC';
                     var encodedQuery = encodeURIComponent(query);
 
                     // Construct the URL
                     var url = ['https://www.googleapis.com/fusiontables/v2/query'];
                     url.push('?sql=' + encodedQuery);
-                    url.push('&key=AIzaSyAm9yWCV7JPCTHCJut8whOjARd7pwROFDQ');
+                    url.push('&key=' + api_key);
                     url.push('&callback=?');
                     $.ajax({
                         url: url.join(''),

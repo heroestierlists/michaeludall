@@ -244,9 +244,9 @@
                         url: url.join(''),
                         dataType: 'jsonp',
                         success: function(build_data) {
-                            console.log(rows);
 							build_data = build_data['rows'];
                             var rows = data['rows'];
+                            console.log(rows);
                             var build_index = 0;
                             for (var i in rows) {
                                 var hero_name = rows[i][0];

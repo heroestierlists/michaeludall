@@ -232,7 +232,7 @@
                 url: url.join(''),
                 dataType: 'jsonp',
                 success: function(data) {
-
+                    console.log('success');
                     var query = "SELECT build_hero_name, build_url, build_title FROM " + builds_key +
                         ' ORDER BY build_hero_name ASC';
                     var encodedQuery = encodeURIComponent(query);

@@ -220,6 +220,7 @@
             var query = "SELECT hero_name, hero_current_tier, hero_last_tier, hero_role FROM " + tier_list_key +
                 ' ORDER BY hero_name ASC';
             var encodedQuery = encodeURIComponent(query);
+            var project_name = '/michaeludall';
 
             // Construct the URL
             var url = ['https://www.googleapis.com/fusiontables/v2/query'];
@@ -254,7 +255,7 @@
                                 var hero_current_tier = rows[i][1];
                                 var hero_last_tier = rows[i][2];
                                 var hero_role = rows[i][3].toLowerCase();
-                                var hero_icon = '/images/heroicons/' + normalized_name + '.png';
+                                var hero_icon = project_name + '/images/heroicons/' + normalized_name + '.png';
 								var a = $('<a class="hero_info">' + hero_name + '</a>');
                                 var hero_icon = $('<img class="hero_icon" src="' + hero_icon + '" height="30px" width="30px"/>');
 								a.prepend(hero_icon);

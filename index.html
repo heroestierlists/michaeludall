@@ -25,20 +25,23 @@
     <h1>Michael Udall's Tier List</h1>
     <h4>Updated on June 9th, 2016</h4>
     <style>
-        --mainbackgroundcolor: #999;
-        --headerbannerbackgroundcolor: #C2AE62;
-        --headerbannercolor: #000;
-        --updatedoncolor: #000;
-        --tiercolor: #000;
-        --uparrowcolor: #00FF00;
-        --sidearrowcolor: yellow;
-        --downarrowcolor: red;
-        --herobackgroundcolor: #000;
-        --herocolor: #C2AE62;
-        --herodropdownbackgroundcolor: #C2AE62;
-        --herodropdownbackgroundcolorhover: #baa54f;
-        --herodropdowncolor: #000;
-        --noticecolor: #000;
+        :root {
+            --mainbackgroundcolor: #999;
+            --headerbannerbackgroundcolor: #C2AE62;
+            --headerbannercolor: #000;
+            --updatedoncolor: #000;
+            --tiercolor: #000;
+            --uparrowcolor: #00FF00;
+            --sidearrowcolor: yellow;
+            --downarrowcolor: red;
+            --herobackgroundcolor: #000;
+            --herocolor: #C2AE62;
+            --herodropdownbackgroundcolor: #C2AE62;
+            --herodropdownbackgroundcolorhover: #baa54f;
+            --herodropdowncolor: #000;
+            --noticecolor: #000;
+        }
+
         #tier1,
         #tier2,
         #tier3,
@@ -261,7 +264,6 @@
                         success: function(build_data) {
 							build_data = build_data['rows'];
                             var rows = data['rows'];
-                            console.log(rows);
                             var build_index = 0;
                             for (var i in rows) {
                                 var hero_name = rows[i][0];

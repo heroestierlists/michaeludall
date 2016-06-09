@@ -226,13 +226,11 @@
             url.push('?sql=' + encodedQuery);
             url.push('&key=' + api_key);
             url.push('&callback=?');
-            console.log(url.join(''));
             // Send the JSONP request using jQuery
             $.ajax({
                 url: url.join(''),
                 dataType: 'jsonp',
                 success: function(data) {
-                    console.log('success');
                     var query = "SELECT build_hero_name, build_url, build_title FROM " + builds_key +
                         ' ORDER BY build_hero_name ASC';
                     var encodedQuery = encodeURIComponent(query);
@@ -243,6 +241,7 @@
                     url.push('&key=' + api_key);
                     url.push('&callback=?');
                     $.ajax({
+                        console.log('success');
                         url: url.join(''),
                         dataType: 'jsonp',
                         success: function(build_data) {
